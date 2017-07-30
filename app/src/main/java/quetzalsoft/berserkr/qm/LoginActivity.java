@@ -315,12 +315,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             UserProfile profile = database.getProfileEmail(mEmail);
             if(profile != null)
             {
-                return mPassword.equalsIgnoreCase(profile.getPassword());
+                if(mPassword.equalsIgnoreCase(profile.getPassword())) {
+                    displayUserInformation(findViewById(android.R.id.content));
+                }
+                else {
+                    return false;
+                }
+            }
+            else {
+                registerUser(findViewById(android.R.id.content));
             }
 
-            registerUser(findViewById(android.R.id.content));
-
             return true;
+        }
+
+        public void displayUserInformation(View view) {
+            Intent intent = new Intent(view.getContext(), UserInformationActivity.class);
+            intent.putExtra("email", mEmail);
+            intent.putExtra("password", mPassword);
+            startActivity(intent);
         }
 
         public void registerUser(View view) {

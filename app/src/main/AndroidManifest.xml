@@ -30,7 +30,11 @@
         </activity>
         <activity
             android:name=".UserProfileActivity"
-            android:label="@string/title_activity_user_profile"></activity>
+            android:label="@string/title_activity_user_profile" />
+        <activity
+            android:name=".UserInformationActivity"
+            android:label="@string/title_activity_user_information"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

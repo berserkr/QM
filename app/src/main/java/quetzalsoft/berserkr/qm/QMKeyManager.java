@@ -16,14 +16,16 @@ public class QMKeyManager {
     DeterministicHierarchy deterministicHierarchy;
     DeterministicKey rootKey;
     ECKey privateKey;
+    NetworkParameters parameters;
 
     public QMKeyManager() {
     }
 
     public boolean generateKeys() {
         privateKey = new ECKey(new SecureRandom());
-        rootKey = (DeterministicKey) privateKey;
-        deterministicHierarchy = new DeterministicHierarchy(rootKey);
+//        rootKey = (DeterministicKey) privateKey;
+//        deterministicHierarchy = new DeterministicHierarchy(rootKey);
+        parameters = NetworkParameters.fromID(NetworkParameters.ID_REGTEST);
         return true;
     }
 
